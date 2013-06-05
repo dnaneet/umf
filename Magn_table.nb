@@ -1,0 +1,1847 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     64996,       1838]
+NotebookOptionsPosition[     63314,       1775]
+NotebookOutlinePosition[     63650,       1790]
+CellTagsIndexPosition[     63607,       1787]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+Non evaporating mathematical fluid, G=1/3, Bo=1/300\
+\>", "Section",
+ CellChangeTimes->{{3.5595013041781397`*^9, 3.559501332726886*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Gmat", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"1.43", "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"-", "5"}]}]}], ",", 
+         RowBox[{"5.73", "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"-", "5"}]}]}], ",", 
+         RowBox[{"4.34", "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"-", "4"}]}]}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"2.37", "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"-", "5"}]}]}], ",", 
+         RowBox[{"7.16", "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"-", "5"}]}]}], ",", 
+         RowBox[{"1.55", "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"-", "5"}]}]}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"1.45", "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"-", "4"}]}]}], ",", 
+         RowBox[{"1.44", "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"-", "4"}]}]}], ",", 
+         RowBox[{"6.16", "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"-", "5"}]}]}]}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"ArrayPlot", "[", 
+    RowBox[{"Gmat", ",", 
+     RowBox[{"Epilog", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"Red", ",", 
+        RowBox[{"MapIndexed", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Text", "[", 
+            RowBox[{
+             RowBox[{"#1", "//", "ScientificForm"}], ",", 
+             RowBox[{"Reverse", "[", 
+              RowBox[{"#2", "-", "0.5"}], "]"}]}], "]"}], "&"}], ",", 
+          RowBox[{"Reverse", "[", "Gmat", "]"}], ",", 
+          RowBox[{"{", "2", "}"}]}], "]"}]}], "}"}]}], ",", 
+     RowBox[{"Mesh", "\[Rule]", "True"}], ",", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+     RowBox[{"FrameTicks", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], "}"}]}], ",", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"\"\<k\>\"", ",", "\"\<\[Lambda]_max\>\""}], "}"}]}], ",", 
+     RowBox[{
+     "PlotLabel", "\[Rule]", 
+      "\"\<Bond number strength, Non evaporating Math fluid,\nG=1/3\>\""}]}], 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.559497170894672*^9, 3.559497299704762*^9}, {
+   3.559497375101712*^9, 3.559497413487659*^9}, {3.559497454960655*^9, 
+   3.559497521773488*^9}, {3.55949767778643*^9, 3.559497750364868*^9}, {
+   3.559497797394582*^9, 3.5594978154998703`*^9}, {3.559497945401029*^9, 
+   3.559497965801684*^9}, {3.559500508337302*^9, 3.5595005330435266`*^9}, {
+   3.559500685430436*^9, 3.55950068990202*^9}, {3.559500818510561*^9, 
+   3.559501142537176*^9}, {3.559501176522694*^9, 3.559501180115026*^9}, 
+   3.5595012553365*^9, {3.5595012910700083`*^9, 3.5595012918505697`*^9}, {
+   3.559501535799939*^9, 3.559501537430738*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   RasterBox[{{0.00028900000000000003`, 0.00029, 0.00037240000000000005`}, {
+    0.00041030000000000005`, 0.0003624, 0.00041850000000000004`}, {0.0004197, 
+    0.0003767, 0.}}, {{0, 0}, {3, 3}}, {0, 0.00043400000000000003`}], {
+    {GrayLevel[
+      NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+     StyleBox[
+      LineBox[{{{0, 3}, {3, 3}}, {{0, 2}, {3, 2}}, {{0, 1}, {3, 1}}, {{0, 
+       0}, {3, 0}}}],
+      Antialiasing->False]}, 
+    {GrayLevel[
+      NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+     StyleBox[
+      LineBox[{{{0, 0}, {0, 3}}, {{1, 0}, {1, 3}}, {{2, 0}, {2, 3}}, {{3, 
+       0}, {3, 3}}}],
+      Antialiasing->False]}}},
+  Epilog->{
+    RGBColor[1, 0, 0], {{
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.45\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000145, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {0.5, 0.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.44\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000144, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {1.5, 0.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"6.16\"", "\[Times]", 
+            SuperscriptBox["10", "\"-5\""]}], 0.0000616, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {2.5, 0.5}]}, {
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"2.37\"", "\[Times]", 
+            SuperscriptBox["10", "\"-5\""]}], 0.000023700000000000003`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {0.5, 1.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"7.16\"", "\[Times]", 
+            SuperscriptBox["10", "\"-5\""]}], 0.0000716, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {1.5, 1.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.55\"", "\[Times]", 
+            SuperscriptBox["10", "\"-5\""]}], 0.0000155, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {2.5, 1.5}]}, {
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.43\"", "\[Times]", 
+            SuperscriptBox["10", "\"-5\""]}], 0.0000143, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {0.5, 2.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"5.73\"", "\[Times]", 
+            SuperscriptBox["10", "\"-5\""]}], 0.00005730000000000001, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {1.5, 2.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"4.34\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.00043400000000000003`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {2.5, 
+       2.5}]}}},
+  Frame->True,
+  FrameLabel->{
+    FormBox["\"\[Lambda]_max\"", TraditionalForm], 
+    FormBox["\"k\"", TraditionalForm]},
+  FrameTicks->{{{{2.5, 
+       FormBox["1", TraditionalForm]}, {1.5, 
+       FormBox["2", TraditionalForm]}, {0.5, 
+       FormBox["3", TraditionalForm]}}, None}, {{{0.5, 
+       FormBox["1", TraditionalForm]}, {1.5, 
+       FormBox["2", TraditionalForm]}, {2.5, 
+       FormBox["3", TraditionalForm]}}, None}},
+  PlotLabel->FormBox[
+   "\"Bond number strength, Non evaporating Math fluid,\\nG=1/3\"", 
+    TraditionalForm]]], "Output",
+ CellChangeTimes->{{3.559497187557527*^9, 3.55949726723158*^9}, 
+   3.559497300273588*^9, {3.559497378613961*^9, 3.559497413732616*^9}, {
+   3.559497506505116*^9, 3.559497522358666*^9}, {3.5594977115101957`*^9, 
+   3.559497731611854*^9}, {3.559497797746709*^9, 3.5594978158753757`*^9}, {
+   3.559497946734885*^9, 3.559497966538452*^9}, {3.559500508809334*^9, 
+   3.559500534321616*^9}, {3.559500686856628*^9, 3.559500690529464*^9}, {
+   3.559500834033308*^9, 3.559500848221005*^9}, {3.559500880470541*^9, 
+   3.559501052252138*^9}, {3.5595011212904253`*^9, 3.559501143940158*^9}, 
+   3.559501180576795*^9, 3.559501255840687*^9, 3.559501292259158*^9, 
+   3.55950153773449*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Mmat", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"6.44", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "5"}]}]}], ",", " ", 
+       RowBox[{"1.31", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", " ", 
+       RowBox[{"2.54", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1.83", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", " ", 
+       RowBox[{"1.55", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", " ", 
+       RowBox[{"2.28", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"2.15", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"2.65", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"1.94", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}]}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ArrayPlot", "[", 
+  RowBox[{"Mmat", ",", 
+   RowBox[{"Epilog", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"Red", ",", 
+      RowBox[{"MapIndexed", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Text", "[", 
+          RowBox[{
+           RowBox[{"#1", "//", "ScientificForm"}], ",", 
+           RowBox[{"Reverse", "[", 
+            RowBox[{"#2", "-", "0.5"}], "]"}]}], "]"}], "&"}], ",", 
+        RowBox[{"Reverse", "[", "Mmat", "]"}], ",", 
+        RowBox[{"{", "2", "}"}]}], "]"}]}], "}"}]}], ",", 
+   RowBox[{"Mesh", "\[Rule]", "True"}], ",", 
+   RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+   RowBox[{"FrameTicks", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], "}"}]}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<k\>\"", ",", "\"\<\[Lambda]_max\>\""}], "}"}]}], ",", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", 
+    "\"\<Thermocapillarity strength, Non evaporating Math fluid \n\
+G=1/3\>\""}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.5595011714708147`*^9, 3.559501284931198*^9}, {
+  3.559501521841152*^9, 3.559501530508333*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   RasterBox[{{0.000049999999999999996`, 0., 0.00007099999999999999}, {
+    0.00008199999999999999, 0.00010999999999999999`, 
+    0.000037000000000000005`}, {0.0002006, 0.00013399999999999998`, 
+    0.000010999999999999996`}}, {{0, 0}, {3, 3}}, {0, 0.000265}], {
+    {GrayLevel[
+      NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+     StyleBox[
+      LineBox[{{{0, 3}, {3, 3}}, {{0, 2}, {3, 2}}, {{0, 1}, {3, 1}}, {{0, 
+       0}, {3, 0}}}],
+      Antialiasing->False]}, 
+    {GrayLevel[
+      NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+     StyleBox[
+      LineBox[{{{0, 0}, {0, 3}}, {{1, 0}, {1, 3}}, {{2, 0}, {2, 3}}, {{3, 
+       0}, {3, 3}}}],
+      Antialiasing->False]}}},
+  Epilog->{
+    RGBColor[1, 0, 0], {{
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"2.15\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000215, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {0.5, 0.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"2.65\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000265, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {1.5, 0.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.94\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000194, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {2.5, 0.5}]}, {
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.83\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000183, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {0.5, 1.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.55\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000155, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {1.5, 1.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"2.28\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.00022799999999999999`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {2.5, 
+       1.5}]}, {
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"6.44\"", "\[Times]", 
+            SuperscriptBox["10", "\"-5\""]}], 0.00006440000000000001, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {0.5, 2.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.31\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000131, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {1.5, 2.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"2.54\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000254, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {2.5, 2.5}]}}},
+  Frame->True,
+  FrameLabel->{
+    FormBox["\"\[Lambda]_max\"", TraditionalForm], 
+    FormBox["\"k\"", TraditionalForm]},
+  FrameTicks->{{{{2.5, 
+       FormBox["1", TraditionalForm]}, {1.5, 
+       FormBox["2", TraditionalForm]}, {0.5, 
+       FormBox["3", TraditionalForm]}}, None}, {{{0.5, 
+       FormBox["1", TraditionalForm]}, {1.5, 
+       FormBox["2", TraditionalForm]}, {2.5, 
+       FormBox["3", TraditionalForm]}}, None}},
+  PlotLabel->FormBox[
+   "\"Thermocapillarity strength, Non evaporating Math fluid \\nG=1/3\"", 
+    TraditionalForm]]], "Output",
+ CellChangeTimes->{{3.559501245217746*^9, 3.5595012852657623`*^9}, 
+   3.559501530820681*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Non evaporating mathematical fluid, G=0, Bo=0\
+\>", "Section",
+ CellChangeTimes->{{3.5595013041781397`*^9, 3.5595013442492247`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Mmat", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"3.35", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"3.48", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"1.06", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"3.77", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"3.58", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"2.57", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"3.06", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"2.22", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"3.41", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}]}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ArrayPlot", "[", 
+  RowBox[{"Mmat", ",", 
+   RowBox[{"Epilog", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"Red", ",", 
+      RowBox[{"MapIndexed", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Text", "[", 
+          RowBox[{
+           RowBox[{"#1", "//", "ScientificForm"}], ",", 
+           RowBox[{"Reverse", "[", 
+            RowBox[{"#2", "-", "0.5"}], "]"}]}], "]"}], "&"}], ",", 
+        RowBox[{"Reverse", "[", "Mmat", "]"}], ",", 
+        RowBox[{"{", "2", "}"}]}], "]"}]}], "}"}]}], ",", 
+   RowBox[{"Mesh", "\[Rule]", "True"}], ",", 
+   RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+   RowBox[{"FrameTicks", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], "}"}]}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<k\>\"", ",", "\"\<\[Lambda]_max\>\""}], "}"}]}], ",", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", 
+    "\"\<Thermocapillarity strength, Non evaporating Math fluid, \n\
+G=0.0\>\""}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.559501362780078*^9, 3.559501443777598*^9}, {
+  3.55950147544711*^9, 3.559501511627327*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   RasterBox[{{0.00007099999999999999, 0.00015499999999999997`, 
+    0.000035999999999999953`}, {0., 0.000018999999999999974`, 
+    0.00011999999999999999`}, {0.00004199999999999999, 0.000029, 
+    0.000271}}, {{0, 0}, {3, 3}}, {0, 0.000377}], {
+    {GrayLevel[
+      NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+     StyleBox[
+      LineBox[{{{0, 3}, {3, 3}}, {{0, 2}, {3, 2}}, {{0, 1}, {3, 1}}, {{0, 
+       0}, {3, 0}}}],
+      Antialiasing->False]}, 
+    {GrayLevel[
+      NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+     StyleBox[
+      LineBox[{{{0, 0}, {0, 3}}, {{1, 0}, {1, 3}}, {{2, 0}, {2, 3}}, {{3, 
+       0}, {3, 3}}}],
+      Antialiasing->False]}}},
+  Epilog->{
+    RGBColor[1, 0, 0], {{
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"3.06\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000306, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {0.5, 0.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"2.22\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.00022200000000000003`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {1.5, 0.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"3.41\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.00034100000000000005`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {2.5, 
+       0.5}]}, {
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"3.77\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000377, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {0.5, 1.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"3.58\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.00035800000000000003`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {1.5, 1.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"2.57\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000257, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {2.5, 1.5}]}, {
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"3.35\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000335, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {0.5, 2.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"3.48\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000348, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {1.5, 2.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.06\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.00010600000000000002`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {2.5, 
+       2.5}]}}},
+  Frame->True,
+  FrameLabel->{
+    FormBox["\"\[Lambda]_max\"", TraditionalForm], 
+    FormBox["\"k\"", TraditionalForm]},
+  FrameTicks->{{{{2.5, 
+       FormBox["1", TraditionalForm]}, {1.5, 
+       FormBox["2", TraditionalForm]}, {0.5, 
+       FormBox["3", TraditionalForm]}}, None}, {{{0.5, 
+       FormBox["1", TraditionalForm]}, {1.5, 
+       FormBox["2", TraditionalForm]}, {2.5, 
+       FormBox["3", TraditionalForm]}}, None}},
+  PlotLabel->FormBox[
+   "\"Thermocapillarity strength, Non evaporating Math fluid, \\nG=0.0\"", 
+    TraditionalForm]]], "Output",
+ CellChangeTimes->{{3.559501400598617*^9, 3.559501444166257*^9}, {
+  3.5595014791710777`*^9, 3.559501512983967*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Evaporating mathematical fluid, G=1/3, Bo=1/300, E=0.0001\
+\>", "Section",
+ CellChangeTimes->{{3.5595013041781397`*^9, 3.5595013442492247`*^9}, {
+  3.559501458117154*^9, 3.559501468218704*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Gmat", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1.20", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"1.81", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"2.36", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "5"}]}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"5.62", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "5"}]}]}], ",", 
+       RowBox[{"1.14", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"1.70", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"4.95", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "5"}]}]}], ",", 
+       RowBox[{"7.57", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "5"}]}]}], ",", 
+       RowBox[{"1.62", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}]}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ArrayPlot", "[", 
+  RowBox[{"Gmat", ",", 
+   RowBox[{"Epilog", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"Red", ",", 
+      RowBox[{"MapIndexed", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Text", "[", 
+          RowBox[{
+           RowBox[{"#1", "//", "ScientificForm"}], ",", 
+           RowBox[{"Reverse", "[", 
+            RowBox[{"#2", "-", "0.5"}], "]"}]}], "]"}], "&"}], ",", 
+        RowBox[{"Reverse", "[", "Gmat", "]"}], ",", 
+        RowBox[{"{", "2", "}"}]}], "]"}]}], "}"}]}], ",", 
+   RowBox[{"Mesh", "\[Rule]", "True"}], ",", 
+   RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+   RowBox[{"FrameTicks", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], "}"}]}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<k\>\"", ",", "\"\<\[Lambda]_max\>\""}], "}"}]}], ",", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", 
+    "\"\<Bond number strength, Evaporating Math fluid,\nG=1/3\>\""}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.559501572182156*^9, 3.559501633476882*^9}, {
+  3.55950168800313*^9, 3.5595017054787693`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   RasterBox[{{0.0001315, 0.0001053, 0.000019}, {0.0001248, 
+    0.00006700000000000002, 0.000010999999999999996`}, {
+    0.000061000000000000005`, 0., 0.0001574}}, {{0, 0}, {3, 3}}, {
+    0, 0.000181}], {
+    {GrayLevel[
+      NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+     StyleBox[
+      LineBox[{{{0, 3}, {3, 3}}, {{0, 2}, {3, 2}}, {{0, 1}, {3, 1}}, {{0, 
+       0}, {3, 0}}}],
+      Antialiasing->False]}, 
+    {GrayLevel[
+      NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+     StyleBox[
+      LineBox[{{{0, 0}, {0, 3}}, {{1, 0}, {1, 3}}, {{2, 0}, {2, 3}}, {{3, 
+       0}, {3, 3}}}],
+      Antialiasing->False]}}},
+  Epilog->{
+    RGBColor[1, 0, 0], {{
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"4.95\"", "\[Times]", 
+            SuperscriptBox["10", "\"-5\""]}], 0.000049500000000000004`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {0.5, 0.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"7.57\"", "\[Times]", 
+            SuperscriptBox["10", "\"-5\""]}], 0.00007570000000000001, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {1.5, 0.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.62\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000162, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {2.5, 0.5}]}, {
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"5.62\"", "\[Times]", 
+            SuperscriptBox["10", "\"-5\""]}], 0.000056200000000000004`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {0.5, 1.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.14\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.00011399999999999999`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {1.5, 1.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.7\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.00017, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {2.5, 1.5}]}, {
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.2\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.00012, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {0.5, 2.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.81\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000181, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {1.5, 2.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"2.36\"", "\[Times]", 
+            SuperscriptBox["10", "\"-5\""]}], 0.0000236, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {2.5, 2.5}]}}},
+  Frame->True,
+  FrameLabel->{
+    FormBox["\"\[Lambda]_max\"", TraditionalForm], 
+    FormBox["\"k\"", TraditionalForm]},
+  FrameTicks->{{{{2.5, 
+       FormBox["1", TraditionalForm]}, {1.5, 
+       FormBox["2", TraditionalForm]}, {0.5, 
+       FormBox["3", TraditionalForm]}}, None}, {{{0.5, 
+       FormBox["1", TraditionalForm]}, {1.5, 
+       FormBox["2", TraditionalForm]}, {2.5, 
+       FormBox["3", TraditionalForm]}}, None}},
+  PlotLabel->FormBox[
+   "\"Bond number strength, Evaporating Math fluid,\\nG=1/3\"", 
+    TraditionalForm]]], "Output",
+ CellChangeTimes->{{3.559501575343131*^9, 3.559501598299244*^9}, 
+   3.559501630078836*^9, {3.559501680046917*^9, 3.559501706371702*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Mmat", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1.67", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"2.37", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"6.09", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "5"}]}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1.06", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"1.97", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"2.31", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1.76", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"1.21", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"1.99", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}]}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ArrayPlot", "[", 
+  RowBox[{"Mmat", ",", 
+   RowBox[{"Epilog", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"Red", ",", 
+      RowBox[{"MapIndexed", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Text", "[", 
+          RowBox[{
+           RowBox[{"#1", "//", "ScientificForm"}], ",", 
+           RowBox[{"Reverse", "[", 
+            RowBox[{"#2", "-", "0.5"}], "]"}]}], "]"}], "&"}], ",", 
+        RowBox[{"Reverse", "[", "Mmat", "]"}], ",", 
+        RowBox[{"{", "2", "}"}]}], "]"}]}], "}"}]}], ",", 
+   RowBox[{"Mesh", "\[Rule]", "True"}], ",", 
+   RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+   RowBox[{"FrameTicks", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], "}"}]}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<k\>\"", ",", "\"\<\[Lambda]_max\>\""}], "}"}]}], ",", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", 
+    "\"\<Thermocapillarity strength, Evaporating Math fluid, \nG=1/3\>\""}]}],
+   "]"}]}], "Input",
+ CellChangeTimes->{{3.55950172330228*^9, 3.559501760289983*^9}, {
+   3.559501807676126*^9, 3.559501824764624*^9}, {3.559501856763966*^9, 
+   3.559501857579522*^9}, 3.559501914816036*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   RasterBox[{{0.00006099999999999999, 0.00011600000000000001`, 0.000038}, {
+    0.00013099999999999999`, 0.000039999999999999996`, 
+    6.00000000000001*^-6}, {0.00007000000000000002, 0., 0.0001761}}, {{0, 
+    0}, {3, 3}}, {0, 0.00023700000000000001`}], {
+    {GrayLevel[
+      NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+     StyleBox[
+      LineBox[{{{0, 3}, {3, 3}}, {{0, 2}, {3, 2}}, {{0, 1}, {3, 1}}, {{0, 
+       0}, {3, 0}}}],
+      Antialiasing->False]}, 
+    {GrayLevel[
+      NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+     StyleBox[
+      LineBox[{{{0, 0}, {0, 3}}, {{1, 0}, {1, 3}}, {{2, 0}, {2, 3}}, {{3, 
+       0}, {3, 3}}}],
+      Antialiasing->False]}}},
+  Epilog->{
+    RGBColor[1, 0, 0], {{
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.76\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.00017600000000000002`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {0.5, 0.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.21\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000121, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {1.5, 0.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.99\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000199, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {2.5, 0.5}]}, {
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.06\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.00010600000000000002`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {0.5, 1.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.97\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.00019700000000000002`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {1.5, 1.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"2.31\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000231, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {2.5, 1.5}]}, {
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.67\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000167, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {0.5, 2.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"2.37\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.00023700000000000001`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {1.5, 2.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"6.09\"", "\[Times]", 
+            SuperscriptBox["10", "\"-5\""]}], 0.0000609, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {2.5, 2.5}]}}},
+  Frame->True,
+  FrameLabel->{
+    FormBox["\"\[Lambda]_max\"", TraditionalForm], 
+    FormBox["\"k\"", TraditionalForm]},
+  FrameTicks->{{{{2.5, 
+       FormBox["1", TraditionalForm]}, {1.5, 
+       FormBox["2", TraditionalForm]}, {0.5, 
+       FormBox["3", TraditionalForm]}}, None}, {{{0.5, 
+       FormBox["1", TraditionalForm]}, {1.5, 
+       FormBox["2", TraditionalForm]}, {2.5, 
+       FormBox["3", TraditionalForm]}}, None}},
+  PlotLabel->FormBox[
+   "\"Thermocapillarity strength, Evaporating Math fluid, \\nG=1/3\"", 
+    TraditionalForm]]], "Output",
+ CellChangeTimes->{3.559501760960579*^9, 3.559501825138226*^9, 
+  3.559501857906248*^9, 3.559501915154479*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Evaporating mathematical fluid, G=0, Bo=0, E=0.0001", "Section",
+ CellChangeTimes->{{3.5595013041781397`*^9, 3.5595013442492247`*^9}, {
+  3.559501458117154*^9, 3.559501468218704*^9}, {3.55950183723647*^9, 
+  3.559501839828755*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Mmat", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"2.01", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"3.51", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"3.15", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "5"}]}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"2.61", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"2.55", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"2.65", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"2.37", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"2.73", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"2.56", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}]}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ArrayPlot", "[", 
+  RowBox[{"Mmat", ",", 
+   RowBox[{"Epilog", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"Red", ",", 
+      RowBox[{"MapIndexed", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Text", "[", 
+          RowBox[{
+           RowBox[{"#1", "//", "ScientificForm"}], ",", 
+           RowBox[{"Reverse", "[", 
+            RowBox[{"#2", "-", "0.5"}], "]"}]}], "]"}], "&"}], ",", 
+        RowBox[{"Reverse", "[", "Mmat", "]"}], ",", 
+        RowBox[{"{", "2", "}"}]}], "]"}]}], "}"}]}], ",", 
+   RowBox[{"Mesh", "\[Rule]", "True"}], ",", 
+   RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+   RowBox[{"FrameTicks", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], "}"}]}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<k\>\"", ",", "\"\<\[Lambda]_max\>\""}], "}"}]}], ",", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", 
+    "\"\<Thermocapillarity strength, Evaporating Math fluid, \nG=0.0\>\""}]}],
+   "]"}]}], "Input",
+ CellChangeTimes->{{3.5595018652884197`*^9, 3.559501968411912*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   RasterBox[{{0.000114, 0.000078, 0.00009499999999999998}, {
+    0.00009000000000000002, 0.000096, 0.00008600000000000003}, {
+    0.00015000000000000004`, 0., 0.0003195}}, {{0, 0}, {3, 3}}, {
+    0, 0.000351}], {
+    {GrayLevel[
+      NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+     StyleBox[
+      LineBox[{{{0, 3}, {3, 3}}, {{0, 2}, {3, 2}}, {{0, 1}, {3, 1}}, {{0, 
+       0}, {3, 0}}}],
+      Antialiasing->False]}, 
+    {GrayLevel[
+      NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+     StyleBox[
+      LineBox[{{{0, 0}, {0, 3}}, {{1, 0}, {1, 3}}, {{2, 0}, {2, 3}}, {{3, 
+       0}, {3, 3}}}],
+      Antialiasing->False]}}},
+  Epilog->{
+    RGBColor[1, 0, 0], {{
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"2.37\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.00023700000000000001`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {0.5, 0.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"2.73\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000273, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {1.5, 0.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"2.56\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.00025600000000000004`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {2.5, 
+       0.5}]}, {
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"2.61\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000261, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {0.5, 1.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"2.55\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000255, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {1.5, 1.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"2.65\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000265, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {2.5, 1.5}]}, {
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"2.01\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.00020099999999999998`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {0.5, 2.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"3.51\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000351, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {1.5, 2.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"3.15\"", "\[Times]", 
+            SuperscriptBox["10", "\"-5\""]}], 0.0000315, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {2.5, 2.5}]}}},
+  Frame->True,
+  FrameLabel->{
+    FormBox["\"\[Lambda]_max\"", TraditionalForm], 
+    FormBox["\"k\"", TraditionalForm]},
+  FrameTicks->{{{{2.5, 
+       FormBox["1", TraditionalForm]}, {1.5, 
+       FormBox["2", TraditionalForm]}, {0.5, 
+       FormBox["3", TraditionalForm]}}, None}, {{{0.5, 
+       FormBox["1", TraditionalForm]}, {1.5, 
+       FormBox["2", TraditionalForm]}, {2.5, 
+       FormBox["3", TraditionalForm]}}, None}},
+  PlotLabel->FormBox[
+   "\"Thermocapillarity strength, Evaporating Math fluid, \\nG=0.0\"", 
+    TraditionalForm]]], "Output",
+ CellChangeTimes->{{3.559501906006971*^9, 3.55950197406255*^9}}]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{{3.5596492916129293`*^9, 3.559649296945764*^9}, {
+  3.559649329694278*^9, 3.559649425184091*^9}, {3.5596494847153463`*^9, 
+  3.559649496047989*^9}, {3.559649646033062*^9, 3.5596496484392*^9}, {
+  3.559649705773837*^9, 3.559649708714417*^9}, {3.559649803686728*^9, 
+  3.559649836344035*^9}, {3.559650410415506*^9, 3.5596504133729753`*^9}, {
+  3.559650491874303*^9, 3.559650526667136*^9}}],
+
+Cell[BoxData[Cell["\<\
+Evaporating mathematical fluid, G=0, Bo=0, E=0.0001. Comparison of S and M \
+effects at IC and Rupture\
+\>", "Section",
+  CellChangeTimes->{{3.5595013041781397`*^9, 3.5595013442492247`*^9}, {
+   3.559501458117154*^9, 3.559501468218704*^9}, {3.55950183723647*^9, 
+   3.559501839828755*^9}}]], "Input",
+ CellChangeTimes->{{3.5596492916129293`*^9, 3.559649296945764*^9}, {
+  3.559649329694278*^9, 3.559649425184091*^9}, {3.5596494847153463`*^9, 
+  3.559649496047989*^9}, {3.559649646033062*^9, 3.5596496484392*^9}, {
+  3.559649705773837*^9, 3.559649708714417*^9}, {3.559649803686728*^9, 
+  3.559649836344035*^9}, {3.559650410415506*^9, 3.5596504133729753`*^9}, {
+  3.559650491874303*^9, 3.5596505389420357`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Smat", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"1.1", "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"-", "5"}]}]}], ",", 
+         RowBox[{"6.99", "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"-", "7"}]}]}], ",", 
+         RowBox[{"1.38", "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"-", "7"}]}]}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"9.01", "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"-", "4"}]}]}], ",", 
+         RowBox[{"6.91", "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"-", "4"}]}]}], ",", 
+         RowBox[{"9.99", "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"-", "4"}]}]}]}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"ArrayPlot", "[", 
+    RowBox[{"Smat", ",", 
+     RowBox[{"Epilog", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"Red", ",", 
+        RowBox[{"MapIndexed", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Text", "[", 
+            RowBox[{
+             RowBox[{"#1", "//", "ScientificForm"}], ",", 
+             RowBox[{"Reverse", "[", 
+              RowBox[{"#2", "-", "0.5"}], "]"}]}], "]"}], "&"}], ",", 
+          RowBox[{"Reverse", "[", "Smat", "]"}], ",", 
+          RowBox[{"{", "2", "}"}]}], "]"}]}], "}"}]}], ",", 
+     RowBox[{"Mesh", "\[Rule]", "True"}], ",", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+     RowBox[{"FrameTicks", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], "}"}]}], ",", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Time [1-ic, 2-Rupture]\>\"", ",", "\"\<\[Lambda]_max\>\""}], 
+       "}"}]}], ",", 
+     RowBox[{
+     "PlotLabel", "\[Rule]", 
+      "\"\<Surface tension strength, Evaporating Math fluid, \nG=0.0\>\""}]}],
+     "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Mmat", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"1.6", "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"-", "5"}]}]}], ",", 
+         RowBox[{"3.99", "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"-", "6"}]}]}], ",", 
+         RowBox[{"1.78", "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"-", "6"}]}]}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"3.22", "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"-", "4"}]}]}], ",", 
+         RowBox[{"2.05", "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"-", "4"}]}]}], ",", 
+         RowBox[{"3.22", "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"-", "4"}]}]}]}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"ArrayPlot", "[", 
+    RowBox[{"Mmat", ",", 
+     RowBox[{"Epilog", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"Red", ",", 
+        RowBox[{"MapIndexed", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Text", "[", 
+            RowBox[{
+             RowBox[{"#1", "//", "ScientificForm"}], ",", 
+             RowBox[{"Reverse", "[", 
+              RowBox[{"#2", "-", "0.5"}], "]"}]}], "]"}], "&"}], ",", 
+          RowBox[{"Reverse", "[", "Mmat", "]"}], ",", 
+          RowBox[{"{", "2", "}"}]}], "]"}]}], "}"}]}], ",", 
+     RowBox[{"Mesh", "\[Rule]", "True"}], ",", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+     RowBox[{"FrameTicks", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], "}"}]}], ",", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Time [1-ic, 2-Rupture]\>\"", ",", "\"\<\[Lambda]_max\>\""}], 
+       "}"}]}], ",", 
+     RowBox[{
+     "PlotLabel", "\[Rule]", 
+      "\"\<Thermocapillarity strength, Evaporating Math fluid, \n\
+G=0.0\>\""}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.5596492916129293`*^9, 3.559649296945764*^9}, {
+  3.559649329694278*^9, 3.559649425184091*^9}, {3.5596494847153463`*^9, 
+  3.559649496047989*^9}, {3.559649646033062*^9, 3.5596496484392*^9}, {
+  3.559649705773837*^9, 3.559649708714417*^9}, {3.559649803686728*^9, 
+  3.559649836344035*^9}, {3.559650410415506*^9, 3.5596504133729753`*^9}, {
+  3.559650491874303*^9, 3.559650526667136*^9}, {3.559650577028696*^9, 
+  3.559650577775531*^9}, {3.559650641821456*^9, 3.559650642504719*^9}, {
+  3.559650681799695*^9, 3.559650684096451*^9}, {3.559650750787313*^9, 
+  3.559650753130179*^9}, {3.559650848151586*^9, 3.5596509458049383`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   RasterBox[{{0.0000980000000000001, 0.000308, 0.}, {0.0009880000000000002, 
+    0.000998301, 0.000998862}}, {{0, 0}, {3, 2}}, {0, 0.000999}], {
+    {GrayLevel[
+      NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+     StyleBox[LineBox[{{{0, 2}, {3, 2}}, {{0, 1}, {3, 1}}, {{0, 0}, {3, 0}}}],
+      
+      Antialiasing->False]}, 
+    {GrayLevel[
+      NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+     StyleBox[
+      LineBox[{{{0, 0}, {0, 2}}, {{1, 0}, {1, 2}}, {{2, 0}, {2, 2}}, {{3, 
+       0}, {3, 2}}}],
+      Antialiasing->False]}}},
+  Epilog->{
+    RGBColor[1, 0, 0], {{
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"9.01\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000901, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {0.5, 0.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"6.91\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.0006910000000000001, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {1.5, 0.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"9.99\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000999, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {2.5, 0.5}]}, {
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.1\"", "\[Times]", 
+            SuperscriptBox["10", "\"-5\""]}], 0.000011000000000000001`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {0.5, 1.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"6.99\"", "\[Times]", 
+            SuperscriptBox["10", "\"-7\""]}], 6.99*^-7, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {1.5, 1.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.38\"", "\[Times]", 
+            SuperscriptBox["10", "\"-7\""]}], 1.38*^-7, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {2.5, 1.5}]}}},
+  Frame->True,
+  FrameLabel->{
+    FormBox["\"\[Lambda]_max\"", TraditionalForm], 
+    FormBox["\"Time [1-ic, 2-Rupture]\"", TraditionalForm]},
+  FrameTicks->{{{{1.5, 
+       FormBox["1", TraditionalForm]}, {0.5, 
+       FormBox["2", TraditionalForm]}}, None}, {{{0.5, 
+       FormBox["1", TraditionalForm]}, {1.5, 
+       FormBox["2", TraditionalForm]}, {2.5, 
+       FormBox["3", TraditionalForm]}}, None}},
+  PlotLabel->FormBox[
+   "\"Surface tension strength, Evaporating Math fluid, \\nG=0.0\"", 
+    TraditionalForm]]], "Output",
+ CellChangeTimes->{{3.559649364371867*^9, 3.559649425715431*^9}, 
+   3.55964970959062*^9, {3.559650842826208*^9, 3.559650848761167*^9}, {
+   3.559650879334497*^9, 3.559650946408861*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   RasterBox[{{0., 0.00011700000000000002`, 0.}, {0.000306, 0.00031801, 
+    0.00032022}}, {{0, 0}, {3, 2}}, {0, 0.000322}], {
+    {GrayLevel[
+      NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+     StyleBox[LineBox[{{{0, 2}, {3, 2}}, {{0, 1}, {3, 1}}, {{0, 0}, {3, 0}}}],
+      
+      Antialiasing->False]}, 
+    {GrayLevel[
+      NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+     StyleBox[
+      LineBox[{{{0, 0}, {0, 2}}, {{1, 0}, {1, 2}}, {{2, 0}, {2, 2}}, {{3, 
+       0}, {3, 2}}}],
+      Antialiasing->False]}}},
+  Epilog->{
+    RGBColor[1, 0, 0], {{
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"3.22\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000322, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {0.5, 0.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"2.05\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000205, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {1.5, 0.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"3.22\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000322, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {2.5, 0.5}]}, {
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.6\"", "\[Times]", 
+            SuperscriptBox["10", "\"-5\""]}], 0.000016000000000000003`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {0.5, 1.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"3.99\"", "\[Times]", 
+            SuperscriptBox["10", "\"-6\""]}], 3.99*^-6, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {1.5, 1.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.78\"", "\[Times]", 
+            SuperscriptBox["10", "\"-6\""]}], 1.78*^-6, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {2.5, 1.5}]}}},
+  Frame->True,
+  FrameLabel->{
+    FormBox["\"\[Lambda]_max\"", TraditionalForm], 
+    FormBox["\"Time [1-ic, 2-Rupture]\"", TraditionalForm]},
+  FrameTicks->{{{{1.5, 
+       FormBox["1", TraditionalForm]}, {0.5, 
+       FormBox["2", TraditionalForm]}}, None}, {{{0.5, 
+       FormBox["1", TraditionalForm]}, {1.5, 
+       FormBox["2", TraditionalForm]}, {2.5, 
+       FormBox["3", TraditionalForm]}}, None}},
+  PlotLabel->FormBox[
+   "\"Thermocapillarity strength, Evaporating Math fluid, \\nG=0.0\"", 
+    TraditionalForm]]], "Output",
+ CellChangeTimes->{{3.559649364371867*^9, 3.559649425715431*^9}, 
+   3.55964970959062*^9, {3.559650842826208*^9, 3.559650848761167*^9}, {
+   3.559650879334497*^9, 3.559650946432136*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Evaporating mathematical fluid, G = 0, Bo = 0, E = 0.0001. Comparison of S \
+and M effects at different Initial condition amplitudes\
+\>", "Section",
+ CellChangeTimes->{{3.559650961662825*^9, 3.559650978389821*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Smat", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1.1", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "5"}]}]}], ",", 
+       RowBox[{"3.318", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "5"}]}]}], ",", 
+       RowBox[{"2.29", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"1.901", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"9.10", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"9.33", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"1.01", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "3"}]}]}], ",", 
+       RowBox[{"9.9", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}]}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ArrayPlot", "[", 
+   RowBox[{"Smat", ",", 
+    RowBox[{"Epilog", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"Red", ",", 
+       RowBox[{"MapIndexed", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Text", "[", 
+           RowBox[{
+            RowBox[{"#1", "//", "ScientificForm"}], ",", 
+            RowBox[{"Reverse", "[", 
+             RowBox[{"#2", "-", "0.5"}], "]"}]}], "]"}], "&"}], ",", 
+         RowBox[{"Reverse", "[", "Smat", "]"}], ",", 
+         RowBox[{"{", "2", "}"}]}], "]"}]}], "}"}]}], ",", 
+    RowBox[{"Mesh", "\[Rule]", "True"}], ",", 
+    RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+    RowBox[{"FrameTicks", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "3", ",", "4"}], "}"}]}], "}"}]}], ",", 
+    RowBox[{"FrameLabel", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<Time [1=ic, 2=Rupture]\>\"", ",", 
+       "\"\<Amplitude[1=5%, 2=15%, 3=35%, 4=50%]\>\""}], "}"}]}], ",", 
+    RowBox[{
+    "PlotLabel", "\[Rule]", 
+     "\"\<Surface tension strength, Evaporating Math fluid, \nG=0.0\>\""}]}], 
+   "]"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Mmat", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1.6", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "5"}]}]}], ",", 
+       RowBox[{"4.03", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "5"}]}]}], ",", 
+       RowBox[{"6.46", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "5"}]}]}], ",", 
+       RowBox[{"1.09", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"3.22", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"3.33", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"3.46", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}], ",", 
+       RowBox[{"3.53", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "4"}]}]}]}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ArrayPlot", "[", 
+  RowBox[{"Mmat", ",", 
+   RowBox[{"Epilog", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"Red", ",", 
+      RowBox[{"MapIndexed", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Text", "[", 
+          RowBox[{
+           RowBox[{"#1", "//", "ScientificForm"}], ",", 
+           RowBox[{"Reverse", "[", 
+            RowBox[{"#2", "-", "0.5"}], "]"}]}], "]"}], "&"}], ",", 
+        RowBox[{"Reverse", "[", "Mmat", "]"}], ",", 
+        RowBox[{"{", "2", "}"}]}], "]"}]}], "}"}]}], ",", 
+   RowBox[{"Mesh", "\[Rule]", "True"}], ",", 
+   RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+   RowBox[{"FrameTicks", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2", ",", "3", ",", "4"}], "}"}]}], "}"}]}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<Time [1=ic, 2=Rupture]\>\"", ",", 
+      "\"\<Amplitude[1=5%, 2=15%, 3=35%, 4=50%]\>\""}], "}"}]}], ",", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", 
+    "\"\<Thermocapillarity strength, Evaporating Math fluid, \nG=0.0\>\""}]}],
+   "]"}]}], "Input",
+ CellChangeTimes->{{3.559651204950739*^9, 3.5596512086725397`*^9}, {
+  3.559651257870373*^9, 3.559651267765615*^9}, {3.559651332192539*^9, 
+  3.559651345381661*^9}, {3.5596520151268253`*^9, 3.559652069185719*^9}, {
+  3.559652107192051*^9, 3.5596521093969183`*^9}, {3.559652146263628*^9, 
+  3.5596521995382013`*^9}, {3.559652239596033*^9, 3.559652264622735*^9}, {
+  3.55965231343744*^9, 3.559652448452107*^9}, {3.559652484532011*^9, 
+  3.559652492963464*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   RasterBox[{{0.00010000000000000005`, 0.00007700000000000003, 0., 
+    0.000020000000000000052`}, {0.000999, 0.00097682, 0.000781, 
+    0.0008199}}, {{0, 0}, {4, 2}}, {0, 0.00101}], {
+    {GrayLevel[
+      NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+     StyleBox[LineBox[{{{0, 2}, {4, 2}}, {{0, 1}, {4, 1}}, {{0, 0}, {4, 0}}}],
+      
+      Antialiasing->False]}, 
+    {GrayLevel[
+      NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+     StyleBox[
+      LineBox[{{{0, 0}, {0, 2}}, {{1, 0}, {1, 2}}, {{2, 0}, {2, 2}}, {{3, 
+       0}, {3, 2}}, {{4, 0}, {4, 2}}}],
+      Antialiasing->False]}}},
+  Epilog->{
+    RGBColor[1, 0, 0], {{
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"9.1\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.00091, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {0.5, 0.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"9.33\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000933, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {1.5, 0.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.01\"", "\[Times]", 
+            SuperscriptBox["10", "\"-3\""]}], 0.00101, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {2.5, 0.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"9.9\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.00099, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {3.5, 0.5}]}, {
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.1\"", "\[Times]", 
+            SuperscriptBox["10", "\"-5\""]}], 0.000011000000000000001`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {0.5, 1.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"3.318\"", "\[Times]", 
+            SuperscriptBox["10", "\"-5\""]}], 0.000033180000000000004`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {1.5, 1.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"2.29\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000229, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {2.5, 1.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.901\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.0001901, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {3.5, 1.5}]}}},
+  Frame->True,
+  FrameLabel->{
+    FormBox["\"Amplitude[1=5%, 2=15%, 3=35%, 4=50%]\"", TraditionalForm], 
+    FormBox["\"Time [1=ic, 2=Rupture]\"", TraditionalForm]},
+  FrameTicks->{{{{1.5, 
+       FormBox["1", TraditionalForm]}, {0.5, 
+       FormBox["2", TraditionalForm]}}, None}, {{{0.5, 
+       FormBox["1", TraditionalForm]}, {1.5, 
+       FormBox["2", TraditionalForm]}, {2.5, 
+       FormBox["3", TraditionalForm]}, {3.5, 
+       FormBox["4", TraditionalForm]}}, None}},
+  PlotLabel->FormBox[
+   "\"Surface tension strength, Evaporating Math fluid, \\nG=0.0\"", 
+    TraditionalForm]]], "Output",
+ CellChangeTimes->{{3.559652350016746*^9, 3.559652448923052*^9}, 
+   3.559652494481842*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   RasterBox[{{0.000030999999999999995`, 0.000019999999999999998`, 
+    7.0000000000000075`*^-6, 0.}, {0.000337, 0.0003127, 0.0002884, 
+    0.00024400000000000002`}}, {{0, 0}, {4, 2}}, {0, 0.000353}], {
+    {GrayLevel[
+      NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+     StyleBox[LineBox[{{{0, 2}, {4, 2}}, {{0, 1}, {4, 1}}, {{0, 0}, {4, 0}}}],
+      
+      Antialiasing->False]}, 
+    {GrayLevel[
+      NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+     StyleBox[
+      LineBox[{{{0, 0}, {0, 2}}, {{1, 0}, {1, 2}}, {{2, 0}, {2, 2}}, {{3, 
+       0}, {3, 2}}, {{4, 0}, {4, 2}}}],
+      Antialiasing->False]}}},
+  Epilog->{
+    RGBColor[1, 0, 0], {{
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"3.22\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000322, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {0.5, 0.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"3.33\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000333, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {1.5, 0.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"3.46\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000346, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {2.5, 0.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"3.53\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000353, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {3.5, 0.5}]}, {
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.6\"", "\[Times]", 
+            SuperscriptBox["10", "\"-5\""]}], 0.000016000000000000003`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {0.5, 1.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"4.03\"", "\[Times]", 
+            SuperscriptBox["10", "\"-5\""]}], 0.000040300000000000004`, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {1.5, 1.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"6.46\"", "\[Times]", 
+            SuperscriptBox["10", "\"-5\""]}], 0.00006460000000000001, 
+          AutoDelete -> True], ScientificForm], TraditionalForm], {2.5, 1.5}], 
+      InsetBox[
+       FormBox[
+        TagBox[
+         InterpretationBox[
+          RowBox[{"\"1.09\"", "\[Times]", 
+            SuperscriptBox["10", "\"-4\""]}], 0.000109, AutoDelete -> True], 
+         ScientificForm], TraditionalForm], {3.5, 1.5}]}}},
+  Frame->True,
+  FrameLabel->{
+    FormBox["\"Amplitude[1=5%, 2=15%, 3=35%, 4=50%]\"", TraditionalForm], 
+    FormBox["\"Time [1=ic, 2=Rupture]\"", TraditionalForm]},
+  FrameTicks->{{{{1.5, 
+       FormBox["1", TraditionalForm]}, {0.5, 
+       FormBox["2", TraditionalForm]}}, None}, {{{0.5, 
+       FormBox["1", TraditionalForm]}, {1.5, 
+       FormBox["2", TraditionalForm]}, {2.5, 
+       FormBox["3", TraditionalForm]}, {3.5, 
+       FormBox["4", TraditionalForm]}}, None}},
+  PlotLabel->FormBox[
+   "\"Thermocapillarity strength, Evaporating Math fluid, \\nG=0.0\"", 
+    TraditionalForm]]], "Output",
+ CellChangeTimes->{{3.559652350016746*^9, 3.559652448923052*^9}, 
+   3.559652494510936*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{740, 569},
+WindowMargins->{{36, Automatic}, {Automatic, 0}},
+FrontEndVersion->"8.0 for Linux x86 (64-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 146, 3, 74, "Section"],
+Cell[CellGroupData[{
+Cell[750, 29, 3014, 80, 221, "Input"],
+Cell[3767, 111, 4316, 106, 415, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8120, 222, 2360, 71, 202, "Input"],
+Cell[10483, 295, 3754, 99, 415, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14286, 400, 142, 3, 74, "Section"],
+Cell[CellGroupData[{
+Cell[14453, 407, 2338, 71, 202, "Input"],
+Cell[16794, 480, 3802, 100, 414, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20645, 586, 203, 4, 74, "Section"],
+Cell[CellGroupData[{
+Cell[20873, 594, 2330, 71, 202, "Input"],
+Cell[23206, 667, 3754, 98, 415, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26997, 770, 2408, 72, 202, "Input"],
+Cell[29408, 844, 3789, 98, 415, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33246, 948, 237, 3, 74, "Section"],
+Cell[CellGroupData[{
+Cell[33508, 955, 2289, 70, 202, "Input"],
+Cell[35800, 1027, 3691, 98, 415, "Output"]
+}, Open  ]],
+Cell[39506, 1128, 452, 6, 50, "Input"],
+Cell[39961, 1136, 732, 12, 78, "Input"],
+Cell[CellGroupData[{
+Cell[40718, 1152, 4773, 131, 430, "Input"],
+Cell[45494, 1285, 2898, 74, 310, "Output"],
+Cell[48395, 1361, 2867, 74, 310, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[51311, 1441, 225, 4, 132, "Section"],
+Cell[CellGroupData[{
+Cell[51561, 1449, 4801, 140, 449, "Input"],
+Cell[56365, 1591, 3441, 89, 257, "Output"],
+Cell[59809, 1682, 3477, 89, 257, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

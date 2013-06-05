@@ -1,0 +1,334 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     11941,        324]
+NotebookOptionsPosition[     11588,        307]
+NotebookOutlinePosition[     11926,        322]
+CellTagsIndexPosition[     11883,        319]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"i", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"dataxy", "=", 
+    RowBox[{"Import", "[", 
+     RowBox[{"fileListxy", "[", 
+      RowBox[{"[", "i", "]"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"dataxy", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{"fileList", "[", 
+       RowBox[{"[", "i", "]"}], "]"}], "]"}]}], ";"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"datat", "=", 
+    RowBox[{"Import", "[", 
+     RowBox[{"fileListt", "[", 
+      RowBox[{"[", "i", "]"}], "]"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"trup", "=", " ", 
+   RowBox[{"Max", "[", 
+    RowBox[{"Flatten", "[", "datat", "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tsrup", "=", 
+   RowBox[{"Ceiling", "[", 
+    RowBox[{"fac", "*", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"Position", "[", 
+       RowBox[{
+        RowBox[{"Ceiling", "[", 
+         RowBox[{"Flatten", "[", "datat", "]"}], "]"}], ",", 
+        RowBox[{"Ceiling", "[", "trup", "]"}]}], "]"}], "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ts", "=", 
+    RowBox[{"tsrup", "[", 
+     RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"trup", "=", 
+     RowBox[{"Ceiling", "[", 
+      RowBox[{"0.60", 
+       RowBox[{
+        RowBox[{"Dimensions", "[", "dataxy", "]"}], "[", 
+        RowBox[{"[", "3", "]"}], "]"}]}], "]"}]}], ";"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"trup", "=", 
+    RowBox[{"fac", "*", " ", 
+     RowBox[{"Max", "[", 
+      RowBox[{"Flatten", "[", "datat", "]"}], "]"}]}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"datasol", "=", 
+   RowBox[{"ListInterpolation", "[", 
+    RowBox[{"dataxy", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "L"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "L"}], "}"}], ",", 
+       RowBox[{"Flatten", "[", "datat", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.5643890759736032`*^9, 3.564389084432703*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"timeslice", "=", 
+     RowBox[{"tsrup", "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"FData1", "=", 
+     RowBox[{"Abs", "[", 
+      RowBox[{"Fourier", "[", 
+       RowBox[{"dataxy", "\[LeftDoubleBracket]", 
+        RowBox[{"All", ",", "All", ",", "timeslice"}], 
+        "\[RightDoubleBracket]"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"FData1", "[", 
+      RowBox[{"[", 
+       RowBox[{"1", ",", "1"}], "]"}], "]"}], "=", "0"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"norm1", "=", 
+     RowBox[{"Norm", "[", 
+      RowBox[{"FData1", ",", "\"\<Frobenius\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"FData2", "=", 
+     RowBox[{"FData1", "/", "norm1"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"thresh2", "=", 
+     RowBox[{"0.35", 
+      RowBox[{"Max", "[", "FData2", "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"FData", "=", 
+     RowBox[{"Threshold", "[", 
+      RowBox[{"FData2", ",", 
+       RowBox[{"{", 
+        RowBox[{"\"\<Hard\>\"", ",", "thresh2"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"valmax", "=", 
+     RowBox[{"ToString", "[", 
+      RowBox[{"Max", "[", 
+       RowBox[{"FData", "[", 
+        RowBox[{"[", 
+         RowBox[{
+          RowBox[{"1", ";;", "10"}], ",", 
+          RowBox[{"1", ";;", "10"}]}], "]"}], "]"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"valmin", "=", 
+      RowBox[{"ToString", "[", 
+       RowBox[{"Min", "[", 
+        RowBox[{"FData", "[", 
+         RowBox[{"[", 
+          RowBox[{
+           RowBox[{"1", ";;", "10"}], ",", 
+           RowBox[{"1", ";;", "10"}]}], "]"}], "]"}], "]"}], "]"}]}], ";"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{"dftCornerRup", "=", "\[IndentingNewLine]", 
+    RowBox[{"ShowLegend", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"MatrixPlot", "[", 
+       RowBox[{
+        RowBox[{"FData", "[", 
+         RowBox[{"[", 
+          RowBox[{
+           RowBox[{"1", ";;", "10"}], ",", 
+           RowBox[{"1", ";;", "10"}]}], "]"}], "]"}], ",", " ", 
+        RowBox[{"BaseStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"FontWeight", "\[Rule]", "\"\<Plain\>\""}], ",", 
+           RowBox[{"FontSize", "\[Rule]", "25"}]}], "}"}]}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"ColorData", "[", "\"\<TemperatureMap\>\"", "]"}], "[", 
+          RowBox[{"1", "-", "#1"}], "]"}], "&"}], ",", "10", ",", "valmax", 
+        ",", "valmin", ",", 
+        RowBox[{"LegendPosition", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"1.1", ",", 
+           RowBox[{"-", ".4"}]}], "}"}]}]}], "}"}]}], "\[IndentingNewLine]", 
+     "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.56438910322948*^9, 3.5643891473403063`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{InsetBox[
+    GraphicsBox[RasterBox[CompressedData["
+1:eJxTTMoPSmVmYGDggmIQGwI+2I/So/QoPUqP0qP0YKbnzJwNhLehfBgYeHfR
+i55mtLpNcv0b+5hXIU9DPzyz3zPb9Mj/kCsD7q5RGjsNADPUcT4=
+      "], {{0, 0}, {10, 
+      10}}, {0, 1}],
+     BaseStyle->{FontWeight -> "Plain", FontSize -> 25},
+     Frame->True,
+     FrameLabel->{None, None},
+     FrameTicks->{{{{9.5, 
+          FormBox["1", TraditionalForm]}, {8.5, 
+          FormBox["2", TraditionalForm]}, {7.5, 
+          FormBox["3", TraditionalForm]}, {6.5, 
+          FormBox["4", TraditionalForm]}, {5.5, 
+          FormBox["5", TraditionalForm]}, {4.5, 
+          FormBox["6", TraditionalForm]}, {3.5, 
+          FormBox["7", TraditionalForm]}, {2.5, 
+          FormBox["8", TraditionalForm]}, {1.5, 
+          FormBox["9", TraditionalForm]}, {0.5, 
+          FormBox["10", TraditionalForm]}}, {{9.5, 
+          FormBox["1", TraditionalForm]}, {8.5, 
+          FormBox["2", TraditionalForm]}, {7.5, 
+          FormBox["3", TraditionalForm]}, {6.5, 
+          FormBox["4", TraditionalForm]}, {5.5, 
+          FormBox["5", TraditionalForm]}, {4.5, 
+          FormBox["6", TraditionalForm]}, {3.5, 
+          FormBox["7", TraditionalForm]}, {2.5, 
+          FormBox["8", TraditionalForm]}, {1.5, 
+          FormBox["9", TraditionalForm]}, {0.5, 
+          FormBox["10", TraditionalForm]}}}, {{{0.5, 
+          FormBox["1", TraditionalForm]}, {1.5, 
+          FormBox["2", TraditionalForm]}, {2.5, 
+          FormBox["3", TraditionalForm]}, {3.5, 
+          FormBox["4", TraditionalForm]}, {4.5, 
+          FormBox["5", TraditionalForm]}, {5.5, 
+          FormBox["6", TraditionalForm]}, {6.5, 
+          FormBox["7", TraditionalForm]}, {7.5, 
+          FormBox["8", TraditionalForm]}, {8.5, 
+          FormBox["9", TraditionalForm]}, {9.5, 
+          FormBox["10", TraditionalForm]}}, {{0.5, 
+          FormBox["1", TraditionalForm]}, {1.5, 
+          FormBox["2", TraditionalForm]}, {2.5, 
+          FormBox["3", TraditionalForm]}, {3.5, 
+          FormBox["4", TraditionalForm]}, {4.5, 
+          FormBox["5", TraditionalForm]}, {5.5, 
+          FormBox["6", TraditionalForm]}, {6.5, 
+          FormBox["7", TraditionalForm]}, {7.5, 
+          FormBox["8", TraditionalForm]}, {8.5, 
+          FormBox["9", TraditionalForm]}, {9.5, 
+          FormBox["10", TraditionalForm]}}}}], {-1, -1.}, {
+    Left, Bottom}, {2, 2.}], GraphicsGroupBox[{
+     {GrayLevel[0], 
+      RectangleBox[{1.1500000000000001`, -0.45}, \
+{1.4009803921568629`, 0.35000000000000003`}]}, 
+     {GrayLevel[1], EdgeForm[{GrayLevel[0], Thickness[0.001]}], 
+      GraphicsGroupBox[{RectangleBox[{1.1, -0.4}, {1.3509803921568628`, 0.4}],
+         InsetBox[
+         GraphicsBox[{{{
+             {RGBColor[0.178927, 0.305394, 0.933501], RectangleBox[{0, 0}]}, 
+             InsetBox["\<\"0.\"\>", 
+              NCache[{1.05, Rational[1, 2]}, {1.05, 0.5}], {-1, 0}, 
+              Automatic, {1, 0}]}, {
+             {RGBColor[
+              0.3569366666666667, 0.48358233333333334`, 0.9439646666666667], 
+              RectangleBox[{0, 1}]}, 
+             InsetBox["\<\"\"\>", 
+              NCache[{1.05, Rational[3, 2]}, {1.05, 1.5}], {-1, 0}, 
+              Automatic, {1, 0}]}, {
+             {RGBColor[
+              0.5793453333333334, 0.6693776666666666, 0.9600273333333333], 
+              RectangleBox[{0, 2}]}, 
+             InsetBox["\<\"\"\>", 
+              NCache[{1.05, Rational[5, 2]}, {1.05, 2.5}], {-1, 0}, 
+              Automatic, {1, 0}]}, {
+             {RGBColor[0.819984, 0.859297, 0.982692], RectangleBox[{0, 3}]}, 
+             InsetBox["\<\"\"\>", 
+              NCache[{1.05, Rational[7, 2]}, {1.05, 3.5}], {-1, 0}, 
+              Automatic, {1, 0}]}, {
+             {RGBColor[0.9518633333333333, 0.9636203333333333, 0.966367], 
+              RectangleBox[{0, 4}]}, 
+             InsetBox["\<\"\"\>", 
+              NCache[{1.05, Rational[9, 2]}, {1.05, 4.5}], {-1, 0}, 
+              Automatic, {1, 0}]}, {
+             {RGBColor[
+              0.9915853333333333, 0.9907883333333334, 0.7891163333333333], 
+              RectangleBox[{0, 5}]}, 
+             InsetBox["\<\"\"\>", 
+              NCache[{1.05, Rational[11, 2]}, {1.05, 5.5}], {-1, 0}, 
+              Automatic, {1, 0}]}, {
+             {RGBColor[0.992503, 0.986373, 0.425376], RectangleBox[{0, 6}]}, 
+             InsetBox["\<\"\"\>", 
+              NCache[{1.05, Rational[13, 2]}, {1.05, 6.5}], {-1, 0}, 
+              Automatic, {1, 0}]}, {
+             {RGBColor[0.9387176666666667, 0.794743, 0.269549], 
+              RectangleBox[{0, 7}]}, 
+             InsetBox["\<\"\"\>", 
+              NCache[{1.05, Rational[15, 2]}, {1.05, 7.5}], {-1, 0}, 
+              Automatic, {1, 0}]}, {
+             {RGBColor[0.873679, 0.5192876666666667, 0.216307], 
+              RectangleBox[{0, 8}]}, 
+             InsetBox["\<\"\"\>", 
+              NCache[{1.05, Rational[17, 2]}, {1.05, 8.5}], {-1, 0}, 
+              Automatic, {1, 0}]}, {
+             {RGBColor[0.817319, 0.134127, 0.164218], RectangleBox[{0, 9}]}, 
+             InsetBox["\<\"0.482994\"\>", 
+              NCache[{1.05, Rational[19, 2]}, {1.05, 9.5}], {-1, 0}, 
+              Automatic, {1, 0}]}}, {}},
+          AspectRatio->3.1874999999999996`,
+          PlotRange->{{-0.1, 3.1}, {-0.1, 10.1}}], {1.1, -0.4}, {
+         Left, Bottom}, {0.2509803921568628, 0.8}]}]}}]},
+  AspectRatio->Automatic,
+  Background->None,
+  ColorOutput->Automatic,
+  ImageSize->Automatic,
+  PlotRange->All]], "Output",
+ CellChangeTimes->{{3.564389107839045*^9, 3.564389148060133*^9}}]
+}, Open  ]]
+},
+WindowSize->{740, 569},
+WindowMargins->{{149, Automatic}, {Automatic, 23}},
+FrontEndVersion->"8.0 for Linux x86 (64-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 2374, 74, 335, "Input"],
+Cell[CellGroupData[{
+Cell[2956, 98, 3064, 88, 335, "Input"],
+Cell[6023, 188, 5549, 116, 310, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

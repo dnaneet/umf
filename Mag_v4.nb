@@ -1,0 +1,318 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     11114,        308]
+NotebookOptionsPosition[     10835,        294]
+NotebookOutlinePosition[     11173,        309]
+CellTagsIndexPosition[     11130,        306]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Needs", "[", "\"\<PlotLegends`\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Needs", "[", "\"\<VectorAnalysis`\>\"", "]"}], "\n", 
+ RowBox[{
+  RowBox[{"SetCoordinates", "[", 
+   RowBox[{"Cartesian", "[", 
+    RowBox[{"x", ",", "y", ",", "z"}], "]"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+  "Needs", "[", "\"\<DifferentialEquations`InterpolatingFunctionAnatomy`\>\"",
+    "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"L", "=", 
+   RowBox[{"Input", "[", "\"\<Please input domain size\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fac", "=", 
+   RowBox[{"Input", "[", "\"\<How close to FULL rupture?\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"thresh1", "=", 
+   RowBox[{"Input", "[", "\"\<DFT Threshold (IC)?\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"thresh2", "=", 
+   RowBox[{"Input", "[", "\"\<DFT Threshold (Rupture)?\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"fileList", "=", 
+  RowBox[{"FileNames", "[", 
+   RowBox[{"\"\<dcm_2350micrometer_g_150x.mat\>\"", ",", " ", 
+    RowBox[{"NotebookDirectory", "[", "]"}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fileListxy", "=", 
+   RowBox[{"FileNames", "[", 
+    RowBox[{"\"\<dcm_2350micrometer_g_150x.mat\>\"", ",", " ", 
+     RowBox[{"NotebookDirectory", "[", "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"fileListt", "=", 
+  RowBox[{"FileNames", "[", 
+   RowBox[{"\"\<dcm_2350micrometer_g_150x_time.mat\>\"", ",", " ", 
+    RowBox[{"NotebookDirectory", "[", "]"}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"datat", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"fileListt", "[", 
+     RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"trup", "=", " ", 
+   RowBox[{"Max", "[", 
+    RowBox[{"Flatten", "[", "datat", "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tsrup", "=", 
+   RowBox[{"Ceiling", "[", 
+    RowBox[{"0.99", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"Position", "[", 
+       RowBox[{
+        RowBox[{"Ceiling", "[", 
+         RowBox[{"Flatten", "[", "datat", "]"}], "]"}], ",", 
+        RowBox[{"Ceiling", "[", "trup", "]"}]}], "]"}], "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ts", "=", 
+  RowBox[{"tsrup", "[", 
+   RowBox[{"[", "1", "]"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.55941519114542*^9, 3.5594151914336433`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"For", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"i", "=", "1"}], ",", 
+     RowBox[{"i", "<", 
+      RowBox[{
+       RowBox[{"Length", "[", "fileList", "]"}], "+", "1"}]}], ",", 
+     RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"dataxy", "=", 
+       RowBox[{"Import", "[", 
+        RowBox[{"fileListxy", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"dataxy", "=", 
+         RowBox[{"Import", "[", 
+          RowBox[{"fileList", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "]"}]}], ";"}], "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"datat", "=", 
+       RowBox[{"Import", "[", 
+        RowBox[{"fileListt", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"trup", "=", " ", 
+       RowBox[{"Max", "[", 
+        RowBox[{"Flatten", "[", "datat", "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"tsrup", "=", 
+       RowBox[{"Ceiling", "[", 
+        RowBox[{"fac", "*", 
+         RowBox[{"Flatten", "[", 
+          RowBox[{"Position", "[", 
+           RowBox[{
+            RowBox[{"Ceiling", "[", 
+             RowBox[{"Flatten", "[", "datat", "]"}], "]"}], ",", 
+            RowBox[{"Ceiling", "[", "trup", "]"}]}], "]"}], "]"}]}], "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"ts", "=", 
+       RowBox[{"tsrup", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"trup", "=", 
+         RowBox[{"Ceiling", "[", 
+          RowBox[{"0.60", 
+           RowBox[{
+            RowBox[{"Dimensions", "[", "dataxy", "]"}], "[", 
+            RowBox[{"[", "3", "]"}], "]"}]}], "]"}]}], ";"}], "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"trup", "=", 
+       RowBox[{"fac", "*", " ", 
+        RowBox[{"Max", "[", 
+         RowBox[{"Flatten", "[", "datat", "]"}], "]"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Clear", "[", 
+         RowBox[{"EqS", ",", "EqM"}], "]"}], "\n", "fac"}], "=", "0.99"}], 
+      ";", "\n", 
+      RowBox[{"xg", "=", 
+       RowBox[{
+        RowBox[{"0.0", "\n", "Bi"}], "=", "1"}]}], ";", "\n", 
+      RowBox[{"Bo", "=", 
+       RowBox[{"xg", " ", 
+        RowBox[{"1", "/", "300"}]}]}], ";", "\n", 
+      RowBox[{"K1", "=", "1"}], ";", "\n", 
+      RowBox[{"\[Epsilon]", "=", 
+       RowBox[{"10", "^", 
+        RowBox[{"-", "6"}]}]}], ";", "\n", 
+      RowBox[{"\[Delta]", "=", 
+       RowBox[{"10", "^", 
+        RowBox[{"-", "3"}]}]}], ";", "\n", 
+      RowBox[{"m", "=", 
+       RowBox[{"2", "*", "0.025"}]}], ";", "\n", 
+      RowBox[{"r", "=", "0"}], ";", "\n", 
+      RowBox[{"EqS", "=", 
+       RowBox[{"Div", "[", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"-", 
+           RowBox[{
+            RowBox[{"h", "[", 
+             RowBox[{"x", ",", "y", ",", "t"}], "]"}], "^", "3"}]}], ")"}], 
+         "*", "Bo", "*", 
+         RowBox[{"Grad", "[", 
+          RowBox[{"h", "[", 
+           RowBox[{"x", ",", "y", ",", "t"}], "]"}], "]"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\n", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Res", "[", 
+        RowBox[{"x_", ",", "y_", ",", "t_"}], "]"}], "=", 
+       RowBox[{"Abs", "[", 
+        RowBox[{"EqS", "/.", 
+         RowBox[{"h", "\[Rule]", "solution"}]}], "]"}]}], ";", "\n", 
+      RowBox[{"EffectofG", "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Plot3D", "[", 
+          RowBox[{
+           RowBox[{"Res", "[", 
+            RowBox[{"x", ",", "y", ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"fac", " ", "datat"}], "//", "Flatten"}], "//", 
+              "Last"}]}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "0", ",", "L"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"y", ",", "0", ",", "L"}], "}"}], ",", 
+           RowBox[{"MaxRecursion", "\[Rule]", "2"}], ",", 
+           RowBox[{"PlotPoints", "\[Rule]", "65"}], ",", 
+           RowBox[{"PlotRange", "\[Rule]", "Automatic"}]}], "]"}], "\n", 
+         RowBox[{"NMaximize", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Res", "[", 
+              RowBox[{"x", ",", "y", ",", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"fac", " ", "datat"}], "//", "Flatten"}], "//", 
+                "Last"}]}], "]"}], ",", 
+             RowBox[{"0", "\[LessEqual]", "x", "\[LessEqual]", "L"}], ",", 
+             RowBox[{"0", "\[LessEqual]", "y", "<", "L"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "y"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", "EqM"}], "=", 
+        RowBox[{"Div", "[", 
+         RowBox[{"m", "*", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"h", "[", 
+              RowBox[{"x", ",", "y", ",", "t"}], "]"}], "/", 
+             RowBox[{"(", 
+              RowBox[{"K1", "+", 
+               RowBox[{"Bi", "*", 
+                RowBox[{"h", "[", 
+                 RowBox[{"x", ",", "y", ",", "t"}], "]"}]}]}], ")"}]}], ")"}],
+            "^", "2"}], "*", 
+          RowBox[{"Grad", "[", 
+           RowBox[{"h", "[", 
+            RowBox[{"x", ",", "y", ",", "t"}], "]"}], "]"}]}], "]"}]}]}], ";",
+       "\n", 
+      RowBox[{"Clear", "[", "ResM", "]"}], ";", "\n", "EqM", ";", "\n", 
+      RowBox[{"Bi", "=", "1"}], ";", "\n", 
+      RowBox[{"K1", "=", "1"}], ";", "\n", 
+      RowBox[{"\[Epsilon]", "=", 
+       RowBox[{"10", "^", 
+        RowBox[{"-", "6"}]}]}], ";", "\n", 
+      RowBox[{"\[Delta]", "=", 
+       RowBox[{"10", "^", 
+        RowBox[{"-", "3"}]}]}], ";", "\n", 
+      RowBox[{"m", "=", 
+       RowBox[{"2", "*", "0.025"}]}], ";", "\n", 
+      RowBox[{"r", "=", "0"}], ";", "\n", 
+      RowBox[{
+       RowBox[{"ResM", "[", 
+        RowBox[{"x_", ",", "y_", ",", "t_"}], "]"}], "=", 
+       RowBox[{"Abs", "[", 
+        RowBox[{"EqM", "/.", 
+         RowBox[{"h", "\[Rule]", "solution"}]}], "]"}]}], ";", "\n", 
+      RowBox[{"EffectofM", "=", 
+       RowBox[{
+        RowBox[{"Plot3D", "[", 
+         RowBox[{
+          RowBox[{"ResM", "[", 
+           RowBox[{"x", ",", "y", ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"fac", " ", "datat"}], "//", "Flatten"}], "//", 
+             "Last"}]}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", "0", ",", "L"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"y", ",", "0", ",", "L"}], "}"}], ",", 
+          RowBox[{"MaxRecursion", "\[Rule]", "2"}], ",", 
+          RowBox[{"PlotPoints", "\[Rule]", "65"}]}], "]"}], "\n", 
+        RowBox[{"NMaximize", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"ResM", "[", 
+             RowBox[{"x", ",", "y", ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"fac", " ", "datat"}], "//", "Flatten"}], "//", 
+               "Last"}]}], "]"}], ",", 
+            RowBox[{"0", "\[LessEqual]", "x", "\[LessEqual]", "L"}], ",", 
+            RowBox[{"0", "\[LessEqual]", "y", "\[LessEqual]", "L"}]}], "}"}], 
+          ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", "y"}], "}"}]}], "]"}]}]}]}]}], "\n", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", "\n", "\[IndentingNewLine]", "\n", "]"}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.559415253125311*^9, 3.5594152674152946`*^9}, {
+  3.5594153348163757`*^9, 3.559415439526626*^9}}]
+},
+WindowSize->{740, 569},
+WindowMargins->{{118, Automatic}, {Automatic, 41}},
+FrontEndVersion->"8.0 for Linux x86 (64-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 2486, 67, 354, "Input"],
+Cell[3046, 89, 7785, 203, 1095, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

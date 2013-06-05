@@ -1,0 +1,350 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     12473,        341]
+NotebookOptionsPosition[     11732,        312]
+NotebookOutlinePosition[     12069,        327]
+CellTagsIndexPosition[     12026,        324]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"L", "=", 
+     RowBox[{"3", "*", "23.9659"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"dataxy1", "=", 
+     RowBox[{
+     "Import", "[", 
+      "\"\</home/dnaneet/Research/Dissertation/wigner/ic/L_3lambda_max_1wl_zg_\
+E_0001_Cos.mat\>\"", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"datat1", "=", 
+     RowBox[{
+     "Import", "[", 
+      "\"\</home/dnaneet/Research/Dissertation/wigner/ic/L_3lambda_max_1wl_zg_\
+E_0001_Cos_time.mat\>\"", "]"}]}], ";"}], "\[IndentingNewLine]"}]}]], "Input",\
+
+ CellChangeTimes->{{3.5571368382860107`*^9, 3.557136882534238*^9}, {
+  3.557137313840293*^9, 3.557137315235021*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"datasol1", "=", 
+    RowBox[{"ListInterpolation", "[", 
+     RowBox[{"dataxy1", ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "L"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "L"}], "}"}], ",", 
+        RowBox[{"Flatten", "[", "datat1", "]"}]}], "}"}]}], "]"}]}], ";"}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"trup1", "=", " ", 
+   RowBox[{"Max", "[", 
+    RowBox[{"Flatten", "[", "datat1", "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tsrup1", "=", 
+   RowBox[{"Ceiling", "[", 
+    RowBox[{"0.9", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"Position", "[", 
+       RowBox[{
+        RowBox[{"Ceiling", "[", 
+         RowBox[{"Flatten", "[", "datat1", "]"}], "]"}], ",", 
+        RowBox[{"Ceiling", "[", "trup1", "]"}]}], "]"}], "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ts1", "=", 
+   RowBox[{"tsrup1", "[", 
+    RowBox[{"[", "1", "]"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.557136886708392*^9, 3.5571369097915583`*^9}, {
+  3.557137319050186*^9, 3.557137338520711*^9}, {3.557137552159698*^9, 
+  3.557137555724244*^9}, {3.5571662093307953`*^9, 3.557166222363427*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{"Plot3D", "[", 
+      RowBox[{
+       RowBox[{"datasol1", "[", 
+        RowBox[{"x", ",", "y", ",", 
+         RowBox[{"fac", "*", "trup1"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "0", ",", "L"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"y", ",", "0", ",", "L"}], "}"}], ",", " ", 
+       RowBox[{"BaseStyle", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"FontWeight", "\[Rule]", "\"\<Plain\>\""}], ",", 
+          RowBox[{"FontSize", "\[Rule]", "25"}]}], "}"}]}], ",", 
+       RowBox[{"ColorFunction", "\[Rule]", "Gray"}], ",", 
+       RowBox[{"PlotRange", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"Full", ",", "Full", ",", 
+          RowBox[{"{", 
+           RowBox[{"0.0", ",", "3.50"}], "}"}]}], "}"}]}]}], "]"}], 
+     "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"fac", ",", "0", ",", "1", ",", "0.001"}], "}"}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.557136974856325*^9, 3.55713709402527*^9}, {
+   3.557137153660274*^9, 3.5571372453802958`*^9}, 3.557137332022583*^9, {
+   3.5571373898241167`*^9, 3.55713742257692*^9}, 3.55713755744103*^9}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`fac$$ = 0.605, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$, Typeset`name$$ = "\"untitled\"", 
+    Typeset`specs$$ = {{
+      Hold[$CellContext`fac$$], 0, 1, 0.001}}, Typeset`size$$ = {
+    196., {65., 78.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`fac$2194$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`fac$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`fac$$, $CellContext`fac$2194$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> {
+        Plot3D[
+         $CellContext`datasol1[$CellContext`x, $CellContext`y, \
+$CellContext`fac$$ $CellContext`trup1], {$CellContext`x, 
+          0, $CellContext`L}, {$CellContext`y, 0, $CellContext`L}, 
+         BaseStyle -> {FontWeight -> "Plain", FontSize -> 25}, ColorFunction -> 
+         Gray, PlotRange -> {Full, Full, {0., 3.5}}]}, 
+      "Specifications" :> {{$CellContext`fac$$, 0, 1, 0.001}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{267., {112., 117.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.5571369604060287`*^9, 3.557137094455522*^9}, {
+   3.557137154479166*^9, 3.55713720767223*^9}, 3.557137246080636*^9, 
+   3.557137403116994*^9, 3.557137566635208*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Plot3D", "::", "plln"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Limiting value \[NoBreak]\\!\\(L\\)\[NoBreak] in \
+\[NoBreak]\\!\\({x, 0, L}\\)\[NoBreak] is not a machine-sized real number. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/plln\\\", \
+ButtonNote -> \\\"Plot3D::plln\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.5571661817732687`*^9}]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"dataxy2", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\</home/dnaneet/Research/Dissertation/wigner/ic/L_3lambda_max_1wl_zg_E_\
+0001_CosSqr.mat\>\"", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"datat2", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\</home/dnaneet/Research/Dissertation/wigner/ic/L_3lambda_max_1wl_zg_E_\
+0001_CosSqr_time.mat\>\"", "]"}]}], ";"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.5571375387770042`*^9, 3.557137544682372*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"datasol2", "=", 
+    RowBox[{"ListInterpolation", "[", 
+     RowBox[{"dataxy2", ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "L"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "L"}], "}"}], ",", 
+        RowBox[{"Flatten", "[", "datat2", "]"}]}], "}"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{"trup2", "=", " ", 
+   RowBox[{"Max", "[", 
+    RowBox[{"Flatten", "[", "datat2", "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tsrup2", "=", 
+   RowBox[{"Ceiling", "[", 
+    RowBox[{"0.9", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"Position", "[", 
+       RowBox[{
+        RowBox[{"Ceiling", "[", 
+         RowBox[{"Flatten", "[", "datat2", "]"}], "]"}], ",", 
+        RowBox[{"Ceiling", "[", "trup", "]"}]}], "]"}], "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ts2", "=", 
+   RowBox[{"tsrup", "[", 
+    RowBox[{"[", "1", "]"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.557137615014217*^9, 3.55713762198792*^9}, {
+  3.557137683693264*^9, 3.55713770869481*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{"Plot3D", "[", 
+     RowBox[{
+      RowBox[{"datasol2", "[", 
+       RowBox[{"x", ",", "y", ",", 
+        RowBox[{"fac", "*", "trup2"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "0", ",", "L"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"y", ",", "0", ",", "L"}], "}"}], ",", " ", 
+      RowBox[{"BaseStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"FontWeight", "\[Rule]", "\"\<Plain\>\""}], ",", 
+         RowBox[{"FontSize", "\[Rule]", "25"}]}], "}"}]}], ",", 
+      RowBox[{"ColorFunction", "\[Rule]", "Gray"}], ",", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"Full", ",", "Full", ",", 
+         RowBox[{"{", 
+          RowBox[{"0.0", ",", "3.50"}], "}"}]}], "}"}]}]}], "]"}], 
+    "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"fac", ",", "0", ",", "1", ",", "0.001"}], "}"}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.557137632776497*^9, 3.5571376347644787`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`fac$$ = 0.992, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`fac$$], 0, 1, 0.001}}, Typeset`size$$ = {
+    196., {65., 78.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`fac$4023$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`fac$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`fac$$, $CellContext`fac$4023$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> {
+        Plot3D[
+         $CellContext`datasol2[$CellContext`x, $CellContext`y, \
+$CellContext`fac$$ $CellContext`trup2], {$CellContext`x, 
+          0, $CellContext`L}, {$CellContext`y, 0, $CellContext`L}, 
+         BaseStyle -> {FontWeight -> "Plain", FontSize -> 25}, ColorFunction -> 
+         Gray, PlotRange -> {Full, Full, {0., 3.5}}]}, 
+      "Specifications" :> {{$CellContext`fac$$, 0, 1, 0.001}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{267., {112., 117.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.5571376383809032`*^9, {3.557137699654078*^9, 3.5571377130534067`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NIntegrate", "[", 
+  RowBox[{
+   RowBox[{"datasol2", "[", 
+    RowBox[{"x", ",", "y", ",", 
+     RowBox[{"0.9", "trup2"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "0", ",", "L"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"y", ",", "0", ",", "L"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5571377488818617`*^9, 3.5571378134352283`*^9}}],
+
+Cell[BoxData["4869.286839716629`"], "Output",
+ CellChangeTimes->{{3.5571377847412767`*^9, 3.557137819005672*^9}}]
+}, Open  ]]
+},
+WindowSize->{740, 569},
+WindowMargins->{{148, Automatic}, {Automatic, 0}},
+FrontEndVersion->"8.0 for Linux x86 (64-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 731, 20, 221, "Input"],
+Cell[1291, 42, 1267, 36, 126, "Input"],
+Cell[CellGroupData[{
+Cell[2583, 82, 1356, 31, 183, "Input"],
+Cell[3942, 115, 1971, 39, 246, "Output"],
+Cell[5916, 156, 505, 10, 24, "Message"]
+}, Open  ]],
+Cell[6436, 169, 516, 13, 183, "Input"],
+Cell[6955, 184, 1164, 35, 126, "Input"],
+Cell[CellGroupData[{
+Cell[8144, 223, 1151, 28, 164, "Input"],
+Cell[9298, 253, 1883, 38, 246, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11218, 296, 382, 10, 30, "Input"],
+Cell[11603, 308, 113, 1, 30, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

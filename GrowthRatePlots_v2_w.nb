@@ -1,0 +1,158 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4567,        148]
+NotebookOptionsPosition[      4109,        127]
+NotebookOutlinePosition[      4446,        142]
+CellTagsIndexPosition[      4403,        139]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "Bo", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"\[Omega]3", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Bi", " ", 
+     RowBox[{"\[Epsilon]", "/", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Bi", " ", "h"}], "+", "K1"}], ")"}], "^", "2"}], ")"}]}]}],
+     "-", 
+    RowBox[{
+     RowBox[{"h", "^", "3"}], " ", 
+     RowBox[{"q", "^", "4"}]}], "-", 
+    RowBox[{"Bo", " ", 
+     RowBox[{"h", "^", "2"}], " ", 
+     RowBox[{"q", "^", "2"}]}], "+", 
+    RowBox[{"m", " ", 
+     RowBox[{"q", "^", "2"}], " ", 
+     RowBox[{
+      RowBox[{"h", "^", "2"}], "/", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Bi", " ", "h"}], "+", "K1"}], ")"}], "^", "2"}], ")"}]}]}],
+     "+", 
+    RowBox[{"\[Delta]", " ", 
+     RowBox[{"h", "^", "3"}], " ", 
+     RowBox[{
+      RowBox[{"q", "^", "2"}], "/", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Bi", " ", "h"}], "+", "K1"}], ")"}], "^", "3"}], 
+       ")"}]}]}]}], "/.", 
+   RowBox[{"{", 
+    RowBox[{"h", "\[Rule]", "1"}], "}"}]}]}]}], "Input",
+ CellChangeTimes->{{3.560626805451733*^9, 3.5606268192549543`*^9}, {
+  3.560626904594448*^9, 3.5606269086389093`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"2.5000000000000004`*^-7", "+", 
+  RowBox[{"0.012500012500000001`", " ", 
+   SuperscriptBox["q", "2"]}], "-", 
+  RowBox[{"Bo", " ", 
+   SuperscriptBox["q", "2"]}], "-", 
+  SuperscriptBox["q", "4"]}]], "Output",
+ CellChangeTimes->{{3.560626789809812*^9, 3.560626820714246*^9}, 
+   3.560626909168517*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", "\[IndentingNewLine]", 
+  RowBox[{"\[Omega]3", ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"Bo", ",", "0", ",", 
+     RowBox[{"1", "/", "300"}]}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"q", ",", "0", ",", 
+     RowBox[{"2", 
+      RowBox[{"qmax", "[", 
+       RowBox[{"Bo", ",", "1"}], "]"}]}]}], "}"}]}], "\[IndentingNewLine]", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.560626824966588*^9, 3.560626852220785*^9}, {
+  3.560626912387989*^9, 3.5606269278620787`*^9}, {3.560627010407641*^9, 
+  3.5606270473166933`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Plot", "::", "nonopt"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Options expected (instead of \[NoBreak]\\!\\({q, 0, \
+\\(\\(2\\\\ \\(\\(qmax[\\(\\(Bo, 1\\)\\)]\\)\\)\\)\\)}\\)\[NoBreak]) beyond \
+position \[NoBreak]\\!\\(2\\)\[NoBreak] in \
+\[NoBreak]\\!\\(Plot[\\(\\(\[Omega]3, \\(\\({Bo, 0, 1\\/300}\\)\\), \\(\\({q, \
+0, \\(\\(2\\\\ \\(\\(qmax[\\(\\(Bo, 1\\)\\)]\\)\\)\\)\\)}\\)\\)\\)\\)]\\)\
+\[NoBreak]. An option must be a rule or a list of rules. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/nonopt\\\", \
+ButtonNote -> \\\"Plot::nonopt\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.560627047638826*^9}],
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", 
+  RowBox[{"\[Omega]3", ",", 
+   RowBox[{"{", 
+    RowBox[{"Bo", ",", "0", ",", 
+     FractionBox["1", "300"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"q", ",", "0", ",", 
+     RowBox[{"2", " ", 
+      RowBox[{"qmax", "[", 
+       RowBox[{"Bo", ",", "1"}], "]"}]}]}], "}"}]}], "]"}]], "Output",
+ CellChangeTimes->{{3.56062684189557*^9, 3.560626852599979*^9}, 
+   3.5606269282419147`*^9, {3.560627012148138*^9, 3.560627047655074*^9}}]
+}, Open  ]]
+},
+WindowSize->{740, 569},
+WindowMargins->{{Automatic, -56}, {Automatic, 0}},
+FrontEndVersion->"8.0 for Linux x86 (64-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 1309, 43, 69, "Input"],
+Cell[1891, 67, 325, 8, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2253, 80, 593, 14, 107, "Input"],
+Cell[2849, 96, 768, 14, 92, "Message"],
+Cell[3620, 112, 473, 12, 47, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
